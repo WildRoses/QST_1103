@@ -18,8 +18,10 @@ public class DifferentFormat {
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
 		Scanner scanner = new Scanner(System.in);
-		Locale locale = Locale.US; //表示是美国时区
-		SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss", locale); //修改格式
+		//创建一个语言环境为美国的对象
+		Locale locale = Locale.US; 
+		//自定义日期格式，用给定的模式和日期符号构造inputFormat
+		SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss", locale); 
 		while (scanner.hasNext()){
 			String line = scanner.nextLine();
 			Date lineDate = null;
