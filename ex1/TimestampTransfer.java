@@ -14,22 +14,21 @@ import java.util.Scanner;
  * 3. 创建pull request，与主仓库的master分支对比
  */
 public class TimestampTransfer {
-	@SuppressWarnings("resource")
-	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);//创建一个可以使用正则表达式来解析基本类型和字符串的简单文本扫描器的队象。 
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//自定义解析日期的具体规范
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		while (scanner.hasNext()){//如果输入没有到最后一行，则返回ture
-			String line = scanner.nextLine();//每次循环定义一个String类型的line，并把当前行赋给line
-			Date lineDate = null;//定义一个Date类型的lineDate
-			long lineTimestamp;//Long类型的lineTimeStamp
-			try {
-				lineDate = inputFormat.parse(line);// 解析字符串的文本，生成 Date类型。
-				lineTimestamp = lineDate.getTime();//类型转换
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);//输出你的输入和转换后的时间
-			} catch (ParseException e) {
+	public static void main(String[] args) {// main函数,程序入口
+		Scanner scanner = new Scanner(System.in);// 键盘输入
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 日期格式化,输入日期格式
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");// 要求输出的日期格式
+		while (scanner.hasNext()) {// 判断scanner当前是否有下个节点
+			String line = scanner.nextLine();// 得到下一行输入数据
+			Date lineDate = null;// 定义一个Date类型的变量
+			long lineTimestamp;// 定义长整型变量
+			try {// 抛出异常
+				lineDate = inputFormat.parse(line);// 提取格式中的日期
+				lineTimestamp = lineDate.getTime();// 时间戳，保证每次拿到的时间函数不是浏览器缓存
+				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);// 输出格式的日期和时间戳
+			} catch (ParseException e) {// 捕获异常
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printStackTrace();// 当执行捕获到异常，就会执行catch中的语句
 			}
 		}
 	}
